@@ -52,3 +52,46 @@ Key points:
 1. Clone the repository:  
    ```bash
    git clone https://github.com/your-username/Campus-Navigation-Bot.git
+2. Navigate to the project folder:
+
+cd Campus-Navigation-Bot
+
+
+3. Install dependencies:
+
+pip install numpy matplotlib seaborn
+
+
+4. Open the Jupyter Notebook:
+
+jupyter notebook
+
+Usage
+Open Campus Navigation Bot.ipynb in Jupyter Notebook.
+Run the cells sequentially.
+Modify START and GOAL points to find paths between different locations.
+Visualizations will display automatically for each algorithm.
+
+Results & Visualization
+Optimal path visualization using arrows 🡆
+Heatmaps for state values of Q-Learning, SARSA, and Monte Carlo
+Cost and steps comparison
+
+Example Screenshots:
+
+
+
+
+(Replace above paths with your actual screenshot images)
+
+Future Improvements
+Add a GUI interface for interactive campus navigation.
+Include real campus map input with more complex routes.
+Integrate user feedback for dynamic path updates.
+Add more reinforcement learning algorithms for comparison.
+
+License
+
+This project is licensed under the MIT License – see the LICENSE
+ file for details.
+
