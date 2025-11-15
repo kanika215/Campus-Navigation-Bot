@@ -1,4 +1,4 @@
-# Campus Navigation Bot 🗺️🤖
+# Campus Navigation Bot 
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue) ![License](https://img.shields.io/badge/License-MIT-green)
 
