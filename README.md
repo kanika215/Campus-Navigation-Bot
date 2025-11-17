@@ -207,8 +207,4 @@ This project is ideal for:
 - numpy
 - matplotlib
 
----
-
-## ⭐ Author
-Developed by Kanika
 
