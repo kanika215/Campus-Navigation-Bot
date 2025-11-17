@@ -1,92 +1,194 @@
-# Campus Navigation Bot 
+# 📌 Campus Navigation Project
 
-![Python](https://img.shields.io/badge/Python-3.10-blue) ![License](https://img.shields.io/badge/License-MIT-green)
+Reinforcement Learning–based grid navigation system implemented on a **5×5 campus layout**.  
+The agent learns to move from **Hostel (Start)** to **Library (Goal)** while avoiding obstacles.
 
-A **Jupyter Notebook project** that helps users navigate a campus efficiently using **reinforcement learning** algorithms like Q-Learning, SARSA, and Monte Carlo. This bot finds the **shortest and optimal paths** between locations on a campus map.
+This project implements and compares four RL algorithms:
 
----
+- **Q-Learning**
+- **SARSA**
+- **Monte Carlo Control**
+- **Temporal Difference (TD-λ)**
 
-## Table of Contents
-1. [Project Overview](#project-overview)  
-2. [Features](#features)  
-3. [Technologies Used](#technologies-used)  
-4. [Installation](#installation)  
-5. [Usage](#usage)  
-6. [Results & Visualization](#results--visualization)  
-7. [Future Improvements](#future-improvements)  
-8. [License](#license)  
+All code is implemented inside:
+
+📄 **Campus Navigation Bot.ipynb**
 
 ---
 
-## Project Overview
-The **Campus Navigation Bot** simulates navigation in a campus environment.  
-It leverages **reinforcement learning** to find optimal paths between starting and goal points.  
-
-Key points:  
-- Supports multiple algorithms: **Q-Learning**, **SARSA**, and **Monte Carlo Control**.  
-- Visualizes the path and value function using **matplotlib** and **seaborn**.  
-- Calculates the **cost** and **steps** for each path.  
-
----
-
-## Features
-- Interactive Jupyter Notebook with organized code cells.  
-- Automatic calculation of **optimal paths**.  
-- Visualizations of:  
-  - Path on campus map 🡆  
-  - State value heatmaps  
-  - Algorithm comparison for cost and steps  
+## 📑 Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [File Structure](#file-structure)
+- [How to Run](#how-to-run)
+- [Campus Environment](#campus-environment)
+- [Algorithms Implemented](#algorithms-implemented)
+  - [Q-Learning](#1-q-learning)
+  - [SARSA](#2-sarsa)
+  - [Monte Carlo Control](#3-monte-carlo-control)
+  - [Temporal Difference TD-λ](#4-temporal-difference-td-λ)
+- [Output Visualizations](#output-visualizations)
+- [Use Cases](#use-cases)
+- [Requirements](#requirements)
 
 ---
 
-## Technologies Used
-- **Python 3.x**  
-- **Jupyter Notebook**  
-- **NumPy**  
-- **Matplotlib**  
-- **Seaborn**  
+## 🏫 **Project Overview**
+This project simulates a **campus navigation environment** represented as a 5×5 grid.  
+Each grid cell corresponds to a real-world campus location such as:
+
+- Hostel (Start)
+- Walkways
+- Admin Buildings (Obstacle)
+- Park (Obstacle)
+- Sports Complex (Obstacle)
+- Library (Goal)
+
+The goal of the agent is to learn the **optimal path** using different Reinforcement Learning algorithms.
 
 ---
 
-## Installation
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/your-username/Campus-Navigation-Bot.git
-2. Navigate to the project folder:
-    cd Campus-Navigation-Bot
+## ✨ **Features**
+- ✔ Custom 5×5 campus grid  
+- ✔ Four RL algorithms  
+- ✔ Arrow-based navigation path visualization  
+- ✔ Reward vs Episode learning curves  
+- ✔ Q-Table generation  
+- ✔ Same environment for all algorithms  
+- ✔ Clean, modular code  
 
- 3. Install dependencies:
-    pip install numpy matplotlib seaborn
+---
 
-4. Open the Jupyter Notebook:
-    jupyter notebook
+## 📁 **File Structure**
 
-## Usage
-Open Campus Navigation Bot.ipynb in Jupyter Notebook.
-Run the cells sequentially.
-Modify START and GOAL points to find paths between different locations.
-Visualizations will display automatically for each algorithm.
+```
+Campus Navigation Bot.ipynb  
+README.md
+```
 
-## Results & Visualization
-Optimal path visualization using arrows 🡆
-Heatmaps for state values of Q-Learning, SARSA, and Monte Carlo
-Cost and steps comparison
+Notebook includes:
 
-## Example Screenshots:
+- Environment setup  
+- Rewards  
+- Step function  
+- Visualization functions  
+- Q-Learning / SARSA  
+- Monte Carlo Control  
+- TD-λ  
+- Final outputs  
 
+---
 
+## ▶️ **How to Run**
 
+### **1️⃣ Install Dependencies**
+```bash
+pip install numpy matplotlib
+```
 
-(Replace above paths with your actual screenshot images)
+### **2️⃣ Run the Notebook**
+Open `Campus Navigation Bot.ipynb` in:
 
-## Future Improvements
-Add a GUI interface for interactive campus navigation.
-Include real campus map input with more complex routes.
-Integrate user feedback for dynamic path updates.
-Add more reinforcement learning algorithms for comparison.
+- Jupyter Notebook  
+- OR VS Code (with Jupyter extension)
 
-## License
+Run all cells to see outputs.
 
-This project is licensed under the MIT License – see the LICENSE
- file for details.
+---
 
+## 🗺 **Campus Environment**
+
+The campus is a 5×5 grid with rewards:
+
+| Location | Reward |
+|---------|--------|
+| Walkway | -1 |
+| Admin / Park / Sports Complex (Obstacles) | -5 |
+| Goal (Library) | +10 |
+| Invalid Move | Penalty |
+
+Obstacles block movement.
+
+---
+
+# 🔍 **Algorithms Implemented**
+
+## 1️⃣ Q-Learning
+**Off-policy TD control**  
+Update rule:
+```
+Q[s][a] = Q[s][a] + α * (r + γ * max(Q[s']) - Q[s][a])
+```
+
+Outputs:
+- Q-table  
+- Optimal path  
+- Reward curve  
+
+---
+
+## 2️⃣ SARSA
+**On-policy TD control**  
+Update rule:
+```
+Q[s][a] = Q[s][a] + α * (r + γ * Q[s’][a’] - Q[s][a])
+```
+
+Outputs:
+- Q-table  
+- Optimal path  
+- Reward graph  
+
+---
+
+## 3️⃣ Monte Carlo Control
+Episode-based learning.  
+Updates occur after each episode.
+
+Outputs:
+- Path  
+- Costs  
+- Reward curves  
+
+---
+
+## 4️⃣ Temporal Difference (TD-λ)
+Uses **eligibility traces**, faster convergence.
+
+Outputs:
+- Path  
+- Costs  
+- Learning curve  
+
+---
+
+## 📊 **Output Visualizations**
+The notebook produces:
+
+- 📈 Reward vs Episodes  
+- 🧭 Arrow-based optimal path  
+- 🟩 Campus grid  
+- 🧮 Q-Tables  
+- 🔄 Algorithm comparisons  
+
+---
+
+## 🧠 **Use Cases**
+Useful for:
+
+- RL learning  
+- Gridworld experiments  
+- University projects  
+- Navigation simulations  
+- Algorithm comparison studies  
+
+---
+
+## 🛠 **Requirements**
+- Python 3.8+  
+- numpy  
+- matplotlib  
+
+---
+
+If you want a **project banner**, **badges**, or **GIF of path animation**, tell me! 🚀
