@@ -23,13 +23,14 @@ All code is implemented inside:
 - [How to Run](#how-to-run)
 - [Campus Environment](#campus-environment)
 - [Algorithms Implemented](#algorithms-implemented)
-  - [Q-Learning](#1-q-learning)
-  - [SARSA](#2-sarsa)
-  - [Monte Carlo Control](#3-monte-carlo-control)
-  - [Temporal Difference TD-λ](#4-temporal-difference-td-λ)
+  - [Q-Learning](#1️⃣-q-learning)
+  - [SARSA](#2️⃣-sarsa)
+  - [Monte Carlo Control](#3️⃣-monte-carlo-control)
+  - [Temporal Difference (TD-λ)](#4️⃣-temporal-difference-td-λ)
 - [Output Visualizations](#output-visualizations)
 - [Use Cases](#use-cases)
 - [Requirements](#requirements)
+
 
 ---
 
