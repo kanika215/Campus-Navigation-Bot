@@ -1,16 +1,16 @@
-# 📌 Campus Navigation Project
+# 🎓 Campus Navigation Project
 
-Reinforcement Learning–based grid navigation system implemented on a **5×5 campus layout**.  
-The agent learns to move from **Hostel (Start)** to **Library (Goal)** while avoiding obstacles.
+Reinforcement Learning–based grid navigation system implemented on a 5×5 campus layout.  
+The agent learns to move from Hostel (Start) to Library (Goal) while avoiding obstacles.
 
 This project implements and compares four RL algorithms:
 
-- **Q-Learning**
-- **SARSA**
-- **Monte Carlo Control**
-- **Temporal Difference (TD-λ)**
+- Q-Learning  
+- SARSA  
+- Monte Carlo Control  
+- Temporal Difference (TD-λ)
 
-All code is implemented inside:
+All code is implemented in:
 
 📄 **Campus Navigation Bot.ipynb**
 
@@ -23,173 +23,192 @@ All code is implemented inside:
 - [How to Run](#how-to-run)
 - [Campus Environment](#campus-environment)
 - [Algorithms Implemented](#algorithms-implemented)
-  - [Q-Learning](#1️⃣-q-learning)
-  - [SARSA](#2️⃣-sarsa)
-  - [Monte Carlo Control](#3️⃣-monte-carlo-control)
-  - [Temporal Difference (TD-λ)](#4️⃣-temporal-difference-td-λ)
+  - [Q-Learning](#q-learning)
+  - [SARSA](#sarsa)
+  - [Monte Carlo Control](#monte-carlo-control)
+  - [Temporal Difference (TD-λ)](#temporal-difference-td-λ)
 - [Output Visualizations](#output-visualizations)
 - [Use Cases](#use-cases)
 - [Requirements](#requirements)
 
-
 ---
 
-## 🏫 **Project Overview**
-This project simulates a **campus navigation environment** represented as a 5×5 grid.  
-Each grid cell corresponds to a real-world campus location such as:
+## Project Overview
 
-- Hostel (Start)
-- Walkways
-- Admin Buildings (Obstacle)
-- Park (Obstacle)
-- Sports Complex (Obstacle)
+The environment is a 5×5 grid representing a campus map.  
+Each cell corresponds to a location such as:
+
+- Hostel  
+- Walkways  
+- Admin Building (Obstacle)  
+- Park (Obstacle)  
+- Sports Complex (Obstacle)  
 - Library (Goal)
 
-The goal of the agent is to learn the **optimal path** using different Reinforcement Learning algorithms.
+The agent receives rewards based on movement, collisions, and reaching the goal.
+
+This project showcases how four RL algorithms learn optimal navigation paths on the **same campus layout**.
 
 ---
 
-## ✨ **Features**
-- ✔ Custom 5×5 campus grid  
-- ✔ Four RL algorithms  
-- ✔ Arrow-based navigation path visualization  
-- ✔ Reward vs Episode learning curves  
-- ✔ Q-Table generation  
-- ✔ Same environment for all algorithms  
-- ✔ Clean, modular code  
+## Features
+
+✔ Custom 5×5 campus environment  
+✔ Four RL algorithms implemented from scratch  
+✔ Arrow-based path visualization  
+✔ Campus grid with labeled buildings  
+✔ Reward trend graphs  
+✔ Q-table outputs (Q-Learning & SARSA)  
+✔ Full comparison of algorithm behavior
 
 ---
 
-## 📁 **File Structure**
+## File Structure
 
 ```
-Campus Navigation Bot.ipynb  
-README.md
+Campus Navigation Bot.ipynb   → Complete implementation
+README.md                     → Project documentation
 ```
 
-Notebook includes:
+Contents inside the notebook:
 
-- Environment setup  
-- Rewards  
-- Step function  
-- Visualization functions  
-- Q-Learning / SARSA  
+- Environment setup (grid, labels, obstacles, movement rewards)
+- Q-Learning  
+- SARSA  
 - Monte Carlo Control  
-- TD-λ  
-- Final outputs  
+- Temporal Difference (TD-λ)  
+- Visualization utilities
 
 ---
 
-## ▶️ **How to Run**
+## How to Run
 
-### **1️⃣ Install Dependencies**
+### Step 1: Install dependencies
 ```bash
 pip install numpy matplotlib
 ```
 
-### **2️⃣ Run the Notebook**
-Open `Campus Navigation Bot.ipynb` in:
+### Step 2: Execute the notebook
+Run:
 
-- Jupyter Notebook  
-- OR VS Code (with Jupyter extension)
+```
+Campus Navigation Bot.ipynb
+```
 
-Run all cells to see outputs.
+The notebook will:
+
+- Train all RL algorithms
+- Display reward graphs
+- Visualize optimal navigation paths
+- Print Q-tables (Q-Learning, SARSA)
 
 ---
 
-## 🗺 **Campus Environment**
+## Campus Environment
 
-The campus is a 5×5 grid with rewards:
+Reward structure:
 
-| Location | Reward |
-|---------|--------|
+| Location Type | Reward |
+|--------------|--------|
 | Walkway | -1 |
-| Admin / Park / Sports Complex (Obstacles) | -5 |
+| Obstacles (Admin, Park, Sports) | -5 |
 | Goal (Library) | +10 |
 | Invalid Move | Penalty |
 
-Obstacles block movement.
+The grid is fully labeled and visualized.
 
 ---
 
-# 🔍 **Algorithms Implemented**
+## Algorithms Implemented
 
-## 1️⃣ Q-Learning
-**Off-policy TD control**  
+### Q-Learning
+Off-policy TD control method  
 Update rule:
+
 ```
-Q[s][a] = Q[s][a] + α * (r + γ * max(Q[s']) - Q[s][a])
+Q[s][a] = Q[s][a] + α * (r + γ * max(Q[s’]) - Q[s][a])
 ```
 
 Outputs:
-- Q-table  
-- Optimal path  
-- Reward curve  
-
----
-
-## 2️⃣ SARSA
-**On-policy TD control**  
-Update rule:
-```
-Q[s][a] = Q[s][a] + α * (r + γ * Q[s’][a’] - Q[s][a])
-```
-
-Outputs:
-- Q-table  
+- Q-Table  
+- Total cost  
 - Optimal path  
 - Reward graph  
 
 ---
 
-## 3️⃣ Monte Carlo Control
-Episode-based learning.  
-Updates occur after each episode.
+### SARSA
+On-policy TD control method  
+Update rule:
+
+```
+Q[s][a] = Q[s][a] + α * (r + γ * Q[s’][a’] - Q[s][a])
+```
 
 Outputs:
-- Path  
-- Costs  
-- Reward curves  
+- Q-Table  
+- Total cost  
+- Optimal path  
+- Reward graph  
 
 ---
 
-## 4️⃣ Temporal Difference (TD-λ)
-Uses **eligibility traces**, faster convergence.
+### Monte Carlo Control
+
+Learns action-values using full-episode returns.  
+No bootstrapping.
 
 Outputs:
-- Path  
-- Costs  
-- Learning curve  
+- Optimal path  
+- Total cost  
+- Reward graph
 
 ---
 
-## 📊 **Output Visualizations**
-The notebook produces:
+### Temporal Difference (TD-λ)
 
-- 📈 Reward vs Episodes  
-- 🧭 Arrow-based optimal path  
-- 🟩 Campus grid  
-- 🧮 Q-Tables  
-- 🔄 Algorithm comparisons  
+Combines TD learning with eligibility traces.  
+More efficient propagation of reward information.
+
+Outputs:
+- Optimal path  
+- Total cost  
+- Reward graph
 
 ---
 
-## 🧠 **Use Cases**
-Useful for:
+## Output Visualizations
 
-- RL learning  
-- Gridworld experiments  
+The project automatically generates:
+
+- Reward curves for all algorithms  
+- Grid-based path visualizations  
+- Arrow-based movement paths  
+- Q-tables  
+- Final optimal policies  
+
+---
+
+## Use Cases
+
+This project is ideal for:
+
+- RL learning and comparison  
 - University projects  
-- Navigation simulations  
-- Algorithm comparison studies  
+- Research demonstrations  
+- Understanding convergence behavior  
+- Pathfinding and navigation systems  
 
 ---
 
-## 🛠 **Requirements**
-- Python 3.8+  
-- numpy  
-- matplotlib  
+## Requirements
+
+- Python 3.8+
+- numpy
+- matplotlib
 
 ---
 
-If you want a **project banner**, **badges**, or **GIF of path animation**, tell me! 🚀
+## ⭐ Author
+Developed by Kanika
+
